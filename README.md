@@ -1,3 +1,12 @@
+# 📱 SmartBuy — Web + Mobile Monorepo (Next.js + Expo + Shared UI)
+
+SmartBuy is an online platform for discovering **handpicked, value-for-money** digital devices (phones, watches, etc.) with an **AI assistant** for analysis & recommendations.
+
+This monorepo contains:
+- **Web**: Next.js 15 (App Router, **SSR/ISR/RSC**) — SEO-friendly storefront
+- **Mobile**: Expo (React Native) — iOS/Android app via EAS
+- **Shared UI**: React Native components reused across web & native via `react-native-web`
+
 # Turborepo starter
 
 This Turborepo starter is maintained by the Turborepo core team.
@@ -122,6 +131,37 @@ npx turbo link
 yarn exec turbo link
 pnpm exec turbo link
 ```
+
+## 🧭 Table of Contents
+1. [Tech Overview](#-tech-overview)
+2. [Repo Structure](#-repo-structure)
+3. [Prerequisites](#-prerequisites)
+4. [Getting Started](#-getting-started)
+5. [Rendering Strategy (SSR/ISR/SSG)](#-rendering-strategy-ssrisrssg)
+6. [Key Configs](#-key-configs)
+7. [Environment Variables](#-environment-variables)
+8. [Universal Abstractions (Web vs Native)](#-universal-abstractions-web-vs-native)
+9. [Testing & Quality](#-testing--quality)
+10. [Build & Deploy](#-build--deploy)
+11. [Turbo Remote Caching](#-turbo-remote-caching)
+12. [Example Shared Components](#-example-shared-components)
+13. [Useful Links](#-useful-links)
+
+---
+
+## 🧱 Tech Overview
+
+- **Web**: Next.js 15 (App Router, **Server Components**, **Server Actions**, **ISR**)
+- **Mobile**: Expo SDK 52+ (EAS builds & submit)
+- **UI**: React Native + `react-native-web` with **Tamagui** or **NativeWind** (choose one)
+- **Data**: `packages/api-client` (tRPC or REST + Zod)
+- **Tooling**: Turborepo + pnpm + TypeScript + ESLint + Prettier
+
+---
+
+## 📂 Repo Structure
+
+
 
 ## Useful Links
 
