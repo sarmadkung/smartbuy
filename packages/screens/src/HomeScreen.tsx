@@ -1,17 +1,7 @@
 'use client'
-
-import React, { useState } from 'react'
+import { useState } from 'react'
 import type { ImageSourcePropType } from 'react-native'
-import {
-  YStack,
-  XStack,
-  Text,
-  Button,
-  Separator,
-  Paragraph,
-  Theme,
-  Image
-} from '@repo/ui'
+import { YStack, XStack, Text, Button, Separator, Paragraph, Theme, Image } from '@repo/ui'
 
 type Props = {
   brandColor?: string
@@ -20,107 +10,63 @@ type Props = {
   onGoogle?: () => void
   onApple?: () => void
   onEmail?: () => void
+  onPhoneNumber?: () => void
   onTerms?: () => void
   onPrivacy?: () => void
-  // left here if you later want to pass an asset instead of the built-in logo
   logoSource?: ImageSourcePropType
 }
 
 export function HomeScreen({
-  brandColor = '#6A1B9A', // purple like your screenshot
+  brandColor,
   onSkip,
   onFacebook,
   onGoogle,
   onApple,
   onEmail,
+  onPhoneNumber,
   onTerms,
   onPrivacy,
-  logoSource
+  logoSource,
 }: Props) {
-  // if you still want a splash delay, re-add the timeout logic here
   const [phase] = useState<'login'>('login')
 
   if (phase === 'login') {
     return (
-      <YStack
-        flex={1}
-        background={brandColor as any}
-        p="$6"
-      >
-        {/* top right: Skip */}
-        <XStack justify="flex-end">
-          <Button chromeless onPress={onSkip}>
-            <Text color="white" fontWeight="700">
-              Skip
-            </Text>
-          </Button>
-        </XStack>
-
-        {/* centered Food Monkey logo */}
-        <YStack flex={1} items="center" justify="center">
-          <FoodMonkeyLogo logoSource={logoSource}/>
+      <YStack flex={1} background="$bg" padding={10}>
+        <YStack flex={1} alignItems="center" justify="center" backgroundColor={brandColor ? (brandColor as any) : '$brand'} borderRadius="$6" padding="$6" marginBottom="$4">
+          <FoodMonkeyLogo logoSource={logoSource} />
         </YStack>
 
-        {/* white bottom sheet */}
-        <YStack
-          background="$color1"
-          borderBlockStartWidth="$6"
-          p="$5"
-          elevation={8}
-        >
-          <Text fontSize="$8" fontWeight="800">
+        <YStack backgroundColor="$color1" borderRadius="$6" padding="$5" elevation={8}>
+          <Text fontSize="$8" fontWeight="800" color="$color">
             Sign up or log in
           </Text>
-          <Paragraph m="$2" color="$color10">
+          <Paragraph marginTop="$2" color="$color10">
             Sign up to get your discount
           </Paragraph>
 
-          {/* full-width buttons */}
-          <YStack m="$4" gap="$3">
-            <SocialButton
-              label="Continue with Facebook"
-              bg="#1877F2"
-              color="white"
-              onPress={onFacebook}
-              left="f"
-            />
-            <SocialButton
-              label="Continue with Google"
-              bg="$color1"
-              color="$color12"
-              borderColor="$color5"
-              onPress={onGoogle}
-              left="G"
-            />
-            <SocialButton
-              label="Continue with Apple"
-              bg="$color12"
-              color="$color1"
-              onPress={onApple}
-              left=""
-            />
+          <YStack marginTop="$4" gap="$3">
+            <SocialButton label="Continue with Facebook" background="$fb" textColor="$color1" onPress={onFacebook} left="f" />
+            <SocialButton label="Continue with Google" background="$color1" textColor="$color12" borderColor="$border" onPress={onGoogle} left="G" />
+            <SocialButton label="Continue with Apple" background="$apple" textColor="$color1" onPress={onApple} left="" />
 
-            <XStack items="center" gap="$3" m="$2">
+            <XStack alignItems="center" gap="$3" marginVertical="$2">
               <Separator flex={1} />
               <Text color="$color10">or</Text>
               <Separator flex={1} />
             </XStack>
 
-            <SocialButton
-              label="Continue with email"
-              bg={brandColor}
-              color="$color1"
-              onPress={onEmail}
-            />
+            <SocialButton label="Continue with email" background={brandColor ? (brandColor as any) : '$brand'} textColor="$color1" onPress={onEmail} />
+            <SocialButton label="Continue with phone number" background={brandColor ? (brandColor as any) : '$brand'} textColor="$color1" onPress={onPhoneNumber} />
           </YStack>
 
-          <Paragraph m="$3" text="center" color="$color10" fontSize="$2">
+          <Paragraph marginTop="$3" textAlign="center" color="$color10" fontSize="$2">
             By signing up you agree to our{' '}
-            <Text color={brandColor as any} onPress={onTerms}>
+            <Text color={brandColor ? (brandColor as any) : '$brand'} onPress={onTerms}>
               Terms and Conditions
             </Text>
             {' '}and{' '}
-            <Text color={brandColor as any} onPress={onPrivacy}>
+            <Text color={brandColor ? (brandColor as any) : '$brand'} onPress={onPrivacy}>
               Privacy Policy
             </Text>
             .
@@ -130,48 +76,33 @@ export function HomeScreen({
     )
   }
 
-  // fallback (not used right now)
   return (
     <Theme name="light">
-      <YStack flex={1} items="center" justify="center">
-        <Text>Loading…</Text>
+      <YStack flex={1} alignItems="center" justifyContent="center">
+        <Text color="$color">Loading…</Text>
       </YStack>
     </Theme>
   )
 }
+
 type LogoProps = {
   logoSource?: ImageSourcePropType
   size?: number
 }
-function FoodMonkeyLogo({ logoSource, size = 140 }: LogoProps) {
 
+function FoodMonkeyLogo({ logoSource, size = 140 }: LogoProps) {
   return (
-    <YStack items="center" justify="center" gap="$3">
-      <YStack
-        width={140}
-        height={140}
-        borderBottomEndRadius={9999}
-        background="$color1"
-        items="center"
-        justify="center"
-        elevation={6}
-      >
-       {logoSource ? (
-          <Image
-            // RN expects either require(...) or {uri: string} – both are valid ImageSourcePropType
-            source={logoSource as any}
-            width="100%"
-            height="100%"
-            resizeMode="contain"
-          />
+    <YStack alignItems="center" justifyContent="center" gap="$3">
+      <YStack width={size} height={size} borderRadius={9999} backgroundColor="$color1" alignItems="center" justifyContent="center" elevation={6} overflow="hidden">
+        {logoSource ? (
+          <Image source={logoSource as any} width="100%" height="100%" resizeMode="contain" />
         ) : (
-          <Text fontSize={Math.floor(size * 0.5)}>🐵</Text>
+          <Text fontSize={Math.floor(size * 0.5)} color="$color12">🐵</Text>
         )}
       </YStack>
 
       <Text fontWeight="900" fontSize="$9" color="$color1" letterSpacing={1}>
         FOOD
-        <Text fontWeight="900" fontSize="$9" color="$color1"> </Text>
         <Text fontWeight="900" fontSize="$9" color="$color1">
           MONKEY
         </Text>
@@ -183,28 +114,27 @@ function FoodMonkeyLogo({ logoSource, size = 140 }: LogoProps) {
 type SBProps = {
   label: string
   onPress?: () => void
-  bg: string | any
-  color: string | any
+  background: string | any
+  textColor: string | any
   borderColor?: string | any
   left?: string
 }
 
-/** Full-width social button */
-function SocialButton({ label, onPress, bg, color, borderColor, left }: SBProps) {
+function SocialButton({ label, onPress, background, textColor, borderColor, left }: SBProps) {
   return (
     <Button
       onPress={onPress}
-      width="100%"                     // fill the sheet
+      width="100%"
       height={50}
-      background={bg as any}
+      backgroundColor={background as any}
       borderColor={borderColor as any}
       borderWidth={borderColor ? 1 : 0}
-      borderBottomEndRadius="$6"
+      borderRadius="$6"
       pressStyle={{ opacity: 0.9 }}
     >
-      <XStack items="center" justify="center" gap="$3" width="100%">
-        {left ? <Text color={color as any} fontWeight="800">{left}</Text> : null}
-        <Text color={color as any} fontWeight="700">
+      <XStack alignItems="center" justifyContent="center" gap="$3" width="100%">
+        {left ? <Text color={textColor as any} fontWeight="800">{left}</Text> : null}
+        <Text color={textColor as any} fontWeight="700">
           {label}
         </Text>
       </XStack>
