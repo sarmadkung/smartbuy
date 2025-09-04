@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "baseUrl": ".",
     "paths": {
       "@repo/ui": ["packages/ui/src/index.ts"],
@@ -13,3 +13,5 @@
     "verbatimModuleSyntax": true
   }
 }
+
+  

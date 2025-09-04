@@ -1,0 +1,18 @@
+{
+  "name": "seeder",
+  "version": "1.0.0",
+  "scripts": {
+    "seed": "tsx src/index.ts",
+    "seed:users": "tsx src/seeds/users.seed.ts"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0",
+    "dotenv": "^17.2.2"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.5",
+    "drizzle-orm": "^0.44.5",
+    "pg": "^8.16.3",
+    "tsx": "^4.20.5"
+  }
+}
