@@ -33,14 +33,6 @@ export function HomeScreen({
   if (phase === 'login') {
     return (
       <YStack flex={1} background="$bg" padding={10}>
-        <XStack justify="flex-end">
-          <Button chromeless onPress={onSkip}>
-            <Text color="$color" fontWeight="700">
-              Skip
-            </Text>
-          </Button>
-        </XStack>
-
         <YStack flex={1} alignItems="center" justify="center" backgroundColor={brandColor ? (brandColor as any) : '$brand'} borderRadius="$6" padding="$6" marginBottom="$4">
           <FoodMonkeyLogo logoSource={logoSource} />
         </YStack>
