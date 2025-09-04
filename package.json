@@ -16,5 +16,21 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@tamagui/babel-plugin": "^1.132.23",
+    "@tamagui/core": "^1.132.23",
+    "@tamagui/font-inter": "^1.132.23",
+    "@tamagui/helpers": "^1.132.23",
+    "@tamagui/next-plugin": "^1.132.23",
+    "@tamagui/theme": "^1.132.23",
+    "react-native-svg": "^15.12.1",
+    "react-native-web": "^0.21.1",
+    "tamagui": "^1.132.23"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild": "0.25.9"
+    }
   }
 }
