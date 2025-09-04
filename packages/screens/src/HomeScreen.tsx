@@ -33,7 +33,7 @@ export function HomeScreen({
   if (phase === 'login') {
     return (
       <YStack flex={1} background="$bg" padding={10}>
-        <YStack flex={1} alignItems="center" justify="center" backgroundColor={brandColor ? (brandColor as any) : '$brand'} borderRadius="$6" padding="$6" marginBottom="$4">
+        <YStack flex={1} alignItems="center" justify="center"  borderRadius="$6" padding="$6" marginBottom="$4">
           <FoodMonkeyLogo logoSource={logoSource} />
         </YStack>
 
@@ -56,8 +56,15 @@ export function HomeScreen({
               <Separator flex={1} />
             </XStack>
 
-            <SocialButton label="Continue with email" background={brandColor ? (brandColor as any) : '$brand'} textColor="$color1" onPress={onEmail} />
-            <SocialButton label="Continue with phone number" background={brandColor ? (brandColor as any) : '$brand'} textColor="$color1" onPress={onPhoneNumber} />
+            <SocialButton label="Continue with email" background="$brand" textColor="$color1" onPress={onEmail} />
+            <SocialButton 
+              label="Continue with phone number" 
+              background="transparent" 
+              textColor="black" 
+              borderColor="black" 
+              borderColor="$border"
+              onPress={onPhoneNumber} 
+            />
           </YStack>
 
           <Paragraph marginTop="$3" textAlign="center" color="$color10" fontSize="$2">
@@ -93,20 +100,13 @@ type LogoProps = {
 function FoodMonkeyLogo({ logoSource, size = 140 }: LogoProps) {
   return (
     <YStack alignItems="center" justifyContent="center" gap="$3">
-      <YStack width={size} height={size} borderRadius={9999} backgroundColor="$color1" alignItems="center" justifyContent="center" elevation={6} overflow="hidden">
+      <YStack width={size} height={size} borderRadius={9999} alignItems="center" justifyContent="center" elevation={6} overflow="hidden">
         {logoSource ? (
           <Image source={logoSource as any} width="100%" height="100%" resizeMode="contain" />
         ) : (
           <Text fontSize={Math.floor(size * 0.5)} color="$color12">🐵</Text>
         )}
       </YStack>
-
-      <Text fontWeight="900" fontSize="$9" color="$color1" letterSpacing={1}>
-        FOOD
-        <Text fontWeight="900" fontSize="$9" color="$color1">
-          MONKEY
-        </Text>
-      </Text>
     </YStack>
   )
 }
