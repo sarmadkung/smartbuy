@@ -1,6 +1,5 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
-import { users } from "../../../packages/db-schema/src/schema"; // ✅ shared schem
 
 const { Pool } = pg;
 
