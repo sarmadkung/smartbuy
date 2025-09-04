@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { getDb } from "./db/client";
-import { users } from "./db/schema";
+import { users } from "../../../packages/db-schema/src/schema";
 
 const app = new Hono<{ Bindings: { DATABASE_URL: string } }>();
 
