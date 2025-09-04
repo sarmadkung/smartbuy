@@ -61,7 +61,6 @@ export function HomeScreen({
               label="Continue with phone number" 
               background="transparent" 
               textColor="black" 
-              borderColor="black" 
               borderColor="$border"
               onPress={onPhoneNumber} 
             />
