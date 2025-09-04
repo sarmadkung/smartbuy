@@ -1,16 +1,17 @@
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "module": "ESNext",
-      "moduleResolution": "Node",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "allowJs": true,
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "types": ["node"]
-    }
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@repo/ui": ["packages/ui/src/index.ts"],
+      "@repo/ui/*": ["packages/ui/src/*"],
+      "@repo/screens": ["packages/screens/src/index.ts"],
+      "@repo/screens/*": ["packages/screens/src/*"]
+    },
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true
   }
+}
+
   
