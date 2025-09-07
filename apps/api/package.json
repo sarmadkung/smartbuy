@@ -18,7 +18,6 @@
     "dotenv": "^17.2.2",
     "drizzle-orm": "^0.44.5",
     "hono": "^4.9.5",
-    "hono-openapi": "^1.0.0",
     "i": "^0.3.7",
     "jose": "^6.1.0",
     "jsonwebtoken": "^9.0.2",
