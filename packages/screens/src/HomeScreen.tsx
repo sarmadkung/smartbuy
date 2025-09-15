@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import type { ImageSourcePropType } from 'react-native'
 import { YStack, XStack, Text, Button, Separator, Paragraph, Theme, Image } from '@repo/ui'
+import { useRouter } from 'expo-router'
 
 type Props = {
   brandColor?: string
@@ -29,12 +30,41 @@ export function HomeScreen({
   logoSource,
 }: Props) {
   const [phase] = useState<'login'>('login')
+  const router = useRouter()
 
   if (phase === 'login') {
     return (
       <YStack flex={1} background="$bg" padding={10}>
-        <YStack flex={1} alignItems="center" justify="center"  borderRadius="$6" padding="$6" marginBottom="$4">
-          <FoodMonkeyLogo logoSource={logoSource} />
+          <XStack width="100%" justifyContent="flex-end" paddingTop="$2">
+    <Button
+      onPress={() => {
+        console.log('Skip button pressed')
+        if (onSkip) {
+          console.log('Calling onSkip function')
+          onSkip()
+        } else {
+          console.log('onSkip function not provided')
+        }
+      }}
+
+      backgroundColor="transparent"
+      paddingVertical={0}
+      paddingHorizontal="$2"
+      pressStyle={{ opacity: 0.6 }}
+      height="auto"
+      minHeight={0}
+    >
+      <Text
+        color={brandColor ? (brandColor as any) : '$brand'}
+        fontWeight="600"
+        fontSize="$3"
+      >
+        Skip
+      </Text>
+    </Button>
+  </XStack>
+        <YStack alignItems="center" justify="center" padding="$2" minHeight={250}>
+          <FoodMonkeyLogo logoSource={logoSource} size={140} />
         </YStack>
 
         <YStack backgroundColor="$color1" borderRadius="$6" padding="$5" elevation={8}>
